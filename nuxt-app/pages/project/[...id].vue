@@ -47,9 +47,9 @@
 
         <div v-if="activeTab === 'usecases'" class="tab-content">
           <div class="content-block">
-            <div v-for="uc in project.useCases" :key="uc.who" class="use-case">
-              <span class="uc-who">{{ uc.who }}</span>
-              <span class="uc-what">{{ uc.what }}</span>
+            <div v-for="(uc, uci) in project.useCases" :key="uci" class="use-case">
+              <span class="uc-who">{{ typeof uc === 'string' ? uc : uc.who }}</span>
+              <span v-if="typeof uc !== 'string'" class="uc-what">{{ uc.what }}</span>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
           <div class="content-block">
             <div v-for="c in project.comparisons" :key="c.name" class="compare-row">
               <span class="compare-name">{{ c.name }}</span>
-              <span class="compare-diff">{{ c.diff }}</span>
+              <span class="compare-diff">{{ c.diff || c.difference }}</span>
             </div>
           </div>
         </div>
