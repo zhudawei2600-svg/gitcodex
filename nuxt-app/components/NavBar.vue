@@ -15,6 +15,7 @@
           {{ cat.name }}
         </NuxtLink>
       </div>
+      <NuxtLink to="/admin" class="admin-link">管理</NuxtLink>
     </div>
   </nav>
 </template>
@@ -99,6 +100,21 @@ const topCategories = [
 .nav-link.router-link-exact-active {
   color: var(--text-primary);
   background: var(--bg-card);
+}
+
+
+.admin-link {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  transition: opacity var(--transition-base), color var(--transition-base);
+}
+
+.admin-link:hover {
+  opacity: 1;
+  color: var(--neon-purple);
 }
 
 @media (max-width: 768px) {
