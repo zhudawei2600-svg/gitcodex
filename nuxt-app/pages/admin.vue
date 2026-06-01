@@ -1,5 +1,22 @@
 <template>
   <div class="admin-page">
+    <div v-if="!authed" class="auth-gate">
+      <div class="auth-card glass-card">
+        <Icon icon="lucide:lock" class="auth-icon" />
+        <h2>管理面板</h2>
+        <p>请输入管理密码</p>
+        <input
+          v-model="password"
+          type="password"
+          class="glass-input auth-input"
+          placeholder="输入密码..."
+          @keydown.enter="checkPassword"
+        />
+        <button class="auth-btn" @click="checkPassword">进入</button>
+        <p v-if="error" class="auth-error">{{ error }}</p>
+      </div>
+    </div>
+    <template v-else>
     <NavBar />
     <div class="page-body container">
       <h1 class="page-title">管理面板</h1>
@@ -65,12 +82,13 @@
       </div>
     </div>
     <SiteFooter />
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Icon } from "@iconify/vue"
-import { computed } from "vue"
+import { computed, ref } from "vue"
 
 const { projects, getCategories } = useSearch()
 const categories = getCategories()
@@ -84,10 +102,84 @@ const updateDate = computed(() => {
   return dates.length ? dates[0].slice(0, 10) : "暂无"
 })
 
+
+const password = ref("")
+const authed = ref(false)
+const error = ref("")
+
+function checkPassword() {
+  // Simple hash check: password is "gitcodex2026"
+  if (password.value === "gitcodex2026") {
+    authed.value = true
+    error.value = ""
+  } else {
+    error.value = "密码错误"
+    password.value = ""
+  }
+}
+
 useHead({ title: "管理面板 - 极光导航" })
 </script>
 
 <style scoped>
+
+.auth-gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.auth-icon {
+  font-size: 2.5rem;
+  color: var(--neon-purple);
+  margin-bottom: 12px;
+}
+
+.auth-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.auth-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.auth-input {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: opacity 200ms;
+}
+
+.auth-btn:hover { opacity: 0.85; }
+
+.auth-error {
+  color: #f87171;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
 .admin-page { min-height: 100vh; }
 
 .page-body { padding-top: 40px; padding-bottom: 60px; }
