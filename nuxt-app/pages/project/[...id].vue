@@ -91,7 +91,7 @@ const route = useRoute()
 const { getById } = useSearch()
 
 const project = computed(() => {
-  const id = route.params.id as string
+  const id = (route.params.id as string[]).join("/")
   return getById(decodeURIComponent(id))
 })
 

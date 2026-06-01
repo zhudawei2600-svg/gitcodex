@@ -7,7 +7,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
 GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 HEADERS = {
@@ -39,12 +39,19 @@ def fetch_readme(owner: str, repo: str) -> str:
     except HTTPError as e:
         if e.code == 404:
             return ""
-        raise
+        if e.code in (403, 429):
+            print(f"    Rate limited on README, waiting 30s...")
+            time.sleep(30)
+            return fetch_readme(owner, repo)
+        print(f"    README error {e.code}: {e.reason}")
+        return ""
 
 
 def main():
     output_dir = Path(__file__).parent.parent / "nuxt-app" / "data"
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    raw_path = output_dir / "raw_repos.json"
 
     all_repos = []
     for page in range(1, (MAX_RESULTS // PER_PAGE) + 2):
@@ -52,9 +59,13 @@ def main():
         try:
             data = search_repos(page)
         except HTTPError as e:
-            print(f"  Error: {e}")
+            print(f"  Search error: {e}")
             if e.code == 422:
                 break
+            if e.code in (403, 429):
+                print("  Rate limited, waiting 60s...")
+                time.sleep(60)
+                continue
             time.sleep(10)
             continue
 
@@ -65,7 +76,7 @@ def main():
         for item in items:
             print(f"  {item['full_name']}")
             readme = fetch_readme(item["owner"]["login"], item["name"])
-            time.sleep(0.3)  # rate limit safety
+            time.sleep(0.5)
 
             all_repos.append({
                 "id": item["full_name"],
@@ -82,12 +93,13 @@ def main():
                 "updated_at": item["updated_at"],
             })
 
+        # Save incrementally after each page
+        raw_path.write_text(json.dumps(all_repos, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"  [Saved {len(all_repos)} repos so far]")
+
         if len(all_repos) >= MAX_RESULTS:
             break
-        time.sleep(2)
-
-    raw_path = output_dir / "raw_repos.json"
-    raw_path.write_text(json.dumps(all_repos, ensure_ascii=False, indent=2), encoding="utf-8")
+        time.sleep(3)
     print(f"\nSaved {len(all_repos)} repos to {raw_path}")
 
 
