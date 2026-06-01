@@ -1,0 +1,98 @@
+[
+  {
+    "id": "react",
+    "name": "React",
+    "tagline": "用于构建用户界面的 JavaScript 库",
+    "stars": 230000,
+    "category": "开发工具",
+    "subcategory": "前端框架",
+    "language": "TypeScript",
+    "topics": ["ui", "frontend", "javascript", "declarative", "component-based"],
+    "summary": "React 是由 Meta（原 Facebook）开发的前端 UI 库，采用组件化和声明式范式，是目前最流行的前端框架之一。",
+    "description": "React 让你用独立的、可复用的组件来构建用户界面。每个组件封装了自己的逻辑和外观。React 使用虚拟 DOM 和高效的差异化算法，确保 UI 更新快速且流畅。",
+    "highlights": [
+      "声明式视图：以状态驱动 UI，数据变化时自动更新",
+      "组件化架构：组件可组合、可复用、可独立测试",
+      "庞大的生态系统：React Router、Next.js、Redux 等工具链丰富",
+      "跨平台能力：React Native 将 React 带到移动端"
+    ],
+    "useCases": [
+      { "who": "前端开发者", "what": "构建单页应用（SPA）和复杂的交互界面" },
+      { "who": "团队", "what": "使用组件库实现一致的设计系统和 UI 规范" }
+    ],
+    "comparisons": [
+      { "name": "Vue", "diff": "Vue 提供模板语法和更低的入门门槛；React 更灵活但需要更多决策" },
+      { "name": "Angular", "diff": "Angular 是完整框架（自带路由、HTTP、DI）；React 轻量灵活，需搭配第三方库" }
+    ],
+    "links": {
+      "github": "https://github.com/facebook/react",
+      "website": "https://react.dev",
+      "chinese_docs": "https://zh-hans.react.dev"
+    },
+    "updated_at": "2026-05-01"
+  },
+  {
+    "id": "vue",
+    "name": "Vue.js",
+    "tagline": "渐进式 JavaScript 框架",
+    "stars": 208000,
+    "category": "开发工具",
+    "subcategory": "前端框架",
+    "language": "TypeScript",
+    "topics": ["ui", "frontend", "javascript", "reactive", "progressive"],
+    "summary": "Vue.js 是一款渐进式前端框架，以易上手、灵活性强和出色的性能著称，被广泛应用于各类 Web 项目。",
+    "description": "Vue 采用自底向上增量开发的设计，核心库只关注视图层，易于上手且便于与第三方库或既有项目整合。Vue 的响应式系统和虚拟 DOM 使得 UI 更新高效流畅。",
+    "highlights": [
+      "渐进式设计：从简单组件到完整 SPA 逐步采用",
+      "响应式数据绑定：状态变化自动驱动 DOM 更新",
+      "单文件组件（SFC）：模板、脚本、样式集成在一个文件中",
+      "全面的官方工具：Vue Router、Pinia、Vite 无缝集成"
+    ],
+    "useCases": [
+      { "who": "新手开发者", "what": "快速搭建交互式前端应用" },
+      { "who": "中小企业", "what": "构建管理后台和面向用户的 Web 应用" }
+    ],
+    "comparisons": [
+      { "name": "React", "diff": "React 使用 JSX 和函数式范式；Vue 使用模板语法和选项式/组合式 API，学习曲线更平缓" },
+      { "name": "Svelte", "diff": "Svelte 编译时消除框架代码，打包体积更小；Vue 生态系统更成熟" }
+    ],
+    "links": {
+      "github": "https://github.com/vuejs/core",
+      "website": "https://vuejs.org",
+      "chinese_docs": "https://cn.vuejs.org"
+    },
+    "updated_at": "2026-05-01"
+  },
+  {
+    "id": "vscode",
+    "name": "Visual Studio Code",
+    "tagline": "重新定义代码编辑器的开源 IDE",
+    "stars": 165000,
+    "category": "效率工具",
+    "subcategory": "代码编辑器",
+    "language": "TypeScript",
+    "topics": ["editor", "ide", "development", "extensions", "cross-platform"],
+    "summary": "VS Code 是微软推出的轻量级但功能强大的开源代码编辑器，凭借丰富的扩展生态系统和出色的开发体验成为最受欢迎的编辑器之一。",
+    "description": "Visual Studio Code 将代码编辑器的简洁与 IDE 的强大功能相结合。内置 Git 集成、智能代码补全、调试支持和终端，通过扩展市场可以支持几乎所有编程语言和工作流。",
+    "highlights": [
+      "智能感知（IntelliSense）：代码补全、参数提示、快速信息",
+      "内置 Git 支持：差异对比、暂存、提交、分支管理",
+      "扩展市场：数万款插件满足各种开发需求",
+      "远程开发：通过 SSH、容器、WSL 远程编辑代码"
+    ],
+    "useCases": [
+      { "who": "全栈开发者", "what": "编写前端、后端、数据库脚本等多语言项目" },
+      { "who": "数据科学家", "what": "搭配 Jupyter 扩展进行数据分析与可视化" }
+    ],
+    "comparisons": [
+      { "name": "Sublime Text", "diff": "Sublime 更轻量；VS Code 功能更丰富且免费开源" },
+      { "name": "WebStorm", "diff": "WebStorm 是付费 IDE，开箱即用；VS Code 免费，需通过扩展扩展功能" }
+    ],
+    "links": {
+      "github": "https://github.com/microsoft/vscode",
+      "website": "https://code.visualstudio.com",
+      "chinese_docs": "https://code.visualstudio.com/docs?lang=zh-cn"
+    },
+    "updated_at": "2026-05-01"
+  }
+]

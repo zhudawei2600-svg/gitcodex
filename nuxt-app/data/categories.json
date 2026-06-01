@@ -1,0 +1,20 @@
+[
+  {
+    "name": "开发工具",
+    "count": 2,
+    "icon": "code",
+    "subcategories": { "前端框架": 2 }
+  },
+  {
+    "name": "AI & 机器学习",
+    "count": 0,
+    "icon": "brain",
+    "subcategories": {}
+  },
+  {
+    "name": "效率工具",
+    "count": 1,
+    "icon": "zap",
+    "subcategories": { "代码编辑器": 1 }
+  }
+]

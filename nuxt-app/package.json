@@ -1,0 +1,17 @@
+{
+  "name": "gitcodex",
+  "private": true,
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxi generate"
+  },
+  "devDependencies": {
+    "nuxt": "^3.12.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "@iconify/vue": "^4.1.0",
+    "fuse.js": "^7.0.0"
+  }
+}
