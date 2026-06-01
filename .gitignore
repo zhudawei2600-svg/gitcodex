@@ -16,3 +16,8 @@ nuxt-app/dist/
 # OS
 .DS_Store
 Thumbs.db
+
+# Generated data (large files)
+nuxt-app/data/raw_repos.json
+nuxt-app/data/projects.json
+nuxt-app/data/categories.json
